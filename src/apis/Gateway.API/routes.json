@@ -1,0 +1,55 @@
+{
+    "Routes": [
+        {
+            "UpstreamPathTemplate": "/auth",
+            "UpstreamhttpsMethod": [ "Post" ],
+            "DownstreamScheme": "http",
+            "DownstreamPathTemplate": "/auth",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "auth.api",
+                    "Port": 80
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/user",
+            "UpstreamhttpsMethod": [ "Post" ],
+            "DownstreamScheme": "http",
+            "DownstreamPathTemplate": "/user",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "auth.api",
+                    "Port": 80
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/role",
+            "UpstreamhttpsMethod": [ "Get" ],
+            "DownstreamScheme": "http",
+            "DownstreamPathTemplate": "/role",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "auth.api",
+                    "Port": 80
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/measure",
+            "UpstreamhttpsMethod": [ "Get" ],
+            "DownstreamScheme": "http",
+            "DownstreamPathTemplate": "/measure",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "weather.api",
+                    "Port": 80
+                }
+            ]
+        }
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "http://localhost:5003"
+    }
+}

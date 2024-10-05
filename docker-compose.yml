@@ -1,0 +1,88 @@
+version: '3.1'
+
+services:
+  mysqldb:
+    build: ./mysqldb
+    image: mysql-farm
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - db-mysql-volume:/var/lib/mysql/
+    networks:
+      - minha-rede
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+  mongodb:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    ports:
+      - "27017:27017"
+    networks:
+      - minha-rede
+    volumes:
+      - ./mongodb-seeder/seed.js:/docker-entrypoint-initdb.d/seed.js
+
+  auth.api:
+    build: ./src/apis/Auth.API
+    container_name: auth.api
+    environment:
+      - DBSERVER=mysqldb
+      - DBDATABASE=farm-data
+      - DBUSER=root
+      - DBPASSWORD=root
+      - DBPORT=3306
+      - PORT=80
+      - JWTSECRET=4d82a63bbdc67c1e4784ed6587f3730c
+    networks:
+      - minha-rede
+    tty: true
+    depends_on:
+      - mysqldb
+
+  weather.api:
+    build: ./src/apis/Weather
+    container_name: weather.api
+    environment:
+      - DBSERVER=mongodb://root:root@mongodb:27017
+      - DBDATABASE=weather
+      - PORT=80
+      - JWTSECRET=4d82a63bbdc67c1e4784ed6587f3730c
+    networks:
+      - minha-rede
+    tty: true
+    depends_on:
+      - mongodb
+
+  gateway.api:
+    build: ./src/apis/Gateway.API
+    container_name: gateway.api
+    environment:
+      - PORT=80
+    networks:
+      - minha-rede
+    tty: true
+    ports:
+      - 5003:80
+    depends_on:
+      - auth.api
+
+  weather.app:
+    build: ./src/webapp/WeatherApp
+    container_name: weather.app
+    networks:
+      - minha-rede
+    tty: true
+    ports:
+      - 5004:80
+
+volumes:
+  db-mysql-volume:
+
+networks:
+  minha-rede:
+    driver: bridge
+      

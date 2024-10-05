@@ -1,0 +1,26 @@
+<section class="vh-100" style="background-color: #3eb4ff;">
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+            <div class="card" style="border-radius: 1rem;background-color: #3eb4ff;">
+                <div class="row g-0" style="background-color: #3eb4ff;">
+
+                    <div class="col-md-1 col-lg-12 d-flex align-items-center" style="background-color: #131343;">
+                        
+                            <img src="smart-farm-logo-b.png" style="width: 200px; margin: 12px;" />
+                            <span class="user" style="color: #ffffff;">{{ greeting }}</span>
+                            <button type="button" (click)="logout()" class="btn btn-danger ms-auto" style="margin-right: 20px;">Logout</button>
+                        
+                    </div>
+                    <div class="col-md-1 col-lg-12 d-flex align-items-center" style="background-color: #ffffff;">
+                        <div class="container">
+                            <router-outlet></router-outlet>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>

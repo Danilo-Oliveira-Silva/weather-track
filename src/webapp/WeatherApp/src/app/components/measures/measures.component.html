@@ -1,0 +1,67 @@
+@if(measureOnView == undefined) {
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-2">
+                <input type="text" class="form-control" [(ngModel)]="measureBody.InitialDate" name="InitialDate"
+                    placeholder="Initial Date">
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-control" [(ngModel)]="measureBody.FinalDate" name="FinalDate"
+                    placeholder="Final Date">
+            </div>
+            <div class="col-2">
+                <button type="button" (click)="load()" class="btn btn-primary ms-auto"
+                    style="margin-right: 20px;">Search</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Label</th>
+                    <th>Date</th>
+                    <th>Precipitation</th>
+                    <th>Temperature</th>
+                    <th>Pressure</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let measure of measuresOnPage; let srno = index" (click)="onView(measure)">
+                    <td>{{ measure.label }}</td>
+                    <td>{{ this.formatDateString(measure.ts.date.toString()) }}</td>
+                    <td>{{ measure.preciptation }}</td>
+                    <td>{{ measure.temperature }}</td>
+                    <td>{{ measure.pressure }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <ul class="pagination justify-content-center">
+            @for(pageNumber of pagesArray; track page)
+            {
+                <li class="page-item" [ngClass]="page == pageNumber ? 'active' : ''" (click)="loadPage(pageNumber)"><a class="page-link">{{ pageNumber }}</a></li>    
+            }
+            <!--
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            -->
+        </ul>
+    </div>
+</div>
+}
+@else {
+<div class="row h-75" style="height:600px !important">
+    <div class="col-12">
+        <app-measure-card [measure]="measureOnView" (onCloseMeasure)="onCloseMeasure($event)"></app-measure-card>
+    </div>
+</div>
+}

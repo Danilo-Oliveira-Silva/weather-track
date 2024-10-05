@@ -1,0 +1,14 @@
+th {
+    background-color:#131343;
+    color: #ffffff;
+}
+
+.page-item .active {
+    background-color: #131343 !important;
+    border-color: #131343 !important;
+}
+
+button {
+    background-color: #131343 !important;
+    border-color: #131343 !important;
+}

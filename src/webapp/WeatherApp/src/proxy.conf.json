@@ -1,0 +1,22 @@
+{
+    "/auth": {
+        "target":"http://gateway.api:80/",
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/user": {
+        "target":"http://gateway.api:80/",
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/role": {
+        "target":"http://gateway.api:80/",
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/measure": {
+        "target":"http://gateway.api:80/",
+        "secure": false,
+        "changeOrigin": true
+    }
+}

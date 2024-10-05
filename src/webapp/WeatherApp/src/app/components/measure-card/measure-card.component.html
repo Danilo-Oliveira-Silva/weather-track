@@ -1,0 +1,73 @@
+<div class="card" style="margin-top: 10px !important;">
+    <div class="card-header bg-primary text-white d-flex align-items-center">
+        <span>{{ measureLoaded.label }}</span>
+        <button class="btn btn-danger ms-auto" style="margin-right: 20px;" (click)="closeMeasure()">X</button>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-ms-3 col-lg-5 d-flex align-items-center">
+                <div class="card-body">
+                    <div class="column">
+
+                        <div class="row mb-4 p-2">
+                            <div class="column col-sm-3">
+                                <img src="/icons/date.svg" class="icon-svg" />
+                            </div>
+                            <div class="column col-sm-9">
+                                <div class="d-flex justify-content-between">
+                                    <p class="mb-1 h4"> {{ this.formatDateString(measureLoaded.ts.date.toString()) }}</p>
+                                </div>
+                                <h6 class="font-weight-bold mb-1">Date</h6>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4 p-2">
+                            <div class="column col-sm-3">
+                                <img src="/icons/temperature.svg" class="icon-svg" />
+                            </div>
+                            <div class="column col-sm-9">
+                                <div class="d-flex justify-content-between">
+                                    <p class="mb-1 h2"> {{ measureLoaded.temperature }}&deg;</p>
+                                </div>
+                                <h6 class="font-weight-bold mb-1">Temperature</h6>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4 p-2">
+                            <div class="column col-sm-3">
+                                <img src="/icons/pressure.svg" class="icon-svg" />
+                            </div>
+                            <div class="column col-sm-9">
+                                <div class="d-flex justify-content-between">
+                                    <p class="mb-1 h2"> {{ measureLoaded.pressure }}hPa</p>
+                                </div>
+                                <h6 class="font-weight-bold mb-1">Pressure</h6>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4 p-2">
+                            <div class="column col-sm-3">
+                                <img src="/icons/precipitation.svg" class="icon-svg" />
+                            </div>
+                            <div class="column col-sm-9">
+                                <div class="d-flex justify-content-between">
+                                    <p class="mb-1 h2"> {{ measureLoaded.preciptation }}%</p>
+                                </div>
+                                <h6 class="font-weight-bold mb-1">Precipitation</h6>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-ms-9 col-lg-7 d-none d-md-block">
+                <iframe width="500"
+                        height="480"
+                        [src]="this.urlSafe"
+                        ></iframe>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<section class="vh-100" style="background-color: #3eb4ff;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-xl-10">
+          <div class="card" style="border-radius: 1rem;background-color: #3eb4ff;">
+            <div class="row g-0" style="background-color: #3eb4ff;">
+              <div class="col-md-6 col-lg-5 d-none d-md-block" style="background-image: url('banner.png'); background-size: cover;">
+                
+              </div>
+              <div class="col-md-6 col-lg-7 d-flex align-items-center" style="background-color: #131343;">
+                <div class="card-body p-4 p-lg-5">
+  
+                  <form>
+  
+                    <div class="d-flex align-items-center mb-3 pb-1">
+                      <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                    
+                        <img src="logo-a.png"
+                            alt="login form" class="img-fluid" style="width:300px;margin: 0 auto;margin-bottom:20px;"/>
+                      
+                    </div>
+  
+                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px; color: #ffffff;">Sign up</h5>
+
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="text" [(ngModel)]="userSignup.Name" name="Name" class="form-control form-control-lg" placeholder="Name" />
+                    </div>
+  
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <input type="email" [(ngModel)]="userSignup.Email" name="Email" class="form-control form-control-lg" placeholder="E-mail" />
+                    </div>
+  
+                    <div data-mdb-input-init class="form-outline mb-4">
+                      <input type="password" [(ngModel)]="userSignup.Password" name="Password" class="form-control form-control-lg" placeholder="Password" />
+                    </div>
+
+                    @for(role of roles; track $index)
+                    {
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="{{ role.roleId }}" name="option1" value="something" (change)="onCheckRoles($event)">
+                            <label class="form-check-label">{{ role.name }}</label>
+                        </div>
+                    }
+                    <br />
+                    <div class="pt-1 mb-4">
+                      <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg btn-block mb-4" (click)="onSignup()" type="button" style="width:100%; background: #3eb4ff; color: #000000;">Sign up</button>
+                    </div>
+
+                    <p class="mb-5 pb-lg-2" style="color: #ffffff;">Already have an account? <a href="/login"
+                        style="color: #ffffff;">Login</a></p>
+
+                  </form>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
